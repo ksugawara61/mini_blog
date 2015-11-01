@@ -22,4 +22,25 @@ class UserRepository extends DbRepository
 	{
 		return sha1($password . 'SecretKey');
 	}
+
+	// ユーザIDを元にレコードを取得するメソッド
+	public function fetchByUserName($user_name)
+	{
+		$sql = "SELECT * FROM user WHERE user_name = :user_name";
+
+		return $this->fetch($sql, array(':user_name' => $user_name));
+	}
+
+	// ユーザIDに一致するレコードの有無を判定するメソッド
+	public function isUniqueUserName($user_name)
+	{
+		$sql = "SELECT COUNT(id) as count FROM user WHERE user_name = :user_name";
+
+		$row = $this->fetch($sql, array(':user_name' => $user_name));
+		if ($row['count'] === '0') {
+			return true;
+		}
+
+		return false;
+	}
 }
