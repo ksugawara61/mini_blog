@@ -8,7 +8,7 @@ class ClassLoader
 	// PHPにオートローダクラスを登録する処理
 	public function register()
 	{
-		spl_autoload_register(array($this, 'localhost'));
+		spl_autoload_register(array($this, 'loadClass'));
 	}
 
 	// ディレクトリを登録する処理
