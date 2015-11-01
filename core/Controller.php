@@ -41,7 +41,7 @@ abstract class Controller
 		}
 
 		// アクションの実行
-		$content = $this->action_method($params);
+		$content = $this->$action_method($params);
 
 		return $content;
 	}
