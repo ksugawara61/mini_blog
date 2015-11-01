@@ -22,9 +22,9 @@ class MiniBlogApplication extends Application
 	protected function configure()
 	{
 		$this->db_manager->connect('master', array(
-			'dsn' => 'mysql:dbname=mini_blog;host=lcalhost',
+			'dsn' => 'mysql:dbname=mini_blog;host=localhost',
 			'user' => 'root',
-			'password' => '',
+			'password' => 'hoge',
 		));	
 	}
 }
