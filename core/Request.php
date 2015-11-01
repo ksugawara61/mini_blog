@@ -26,7 +26,7 @@ class Request
 	public function getPost($name, $default = null)
 	{
 		if (isset($_POST[$name])) {
-			return $_POST[$name]
+			return $_POST[$name];
 		}
 
 		return $default;
