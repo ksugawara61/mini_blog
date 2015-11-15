@@ -17,7 +17,7 @@ CREATE TABLE status(
 	id INTEGER AUTO_INCREMENT,
 	user_id INTEGER NOT NULL,
 	body VARCHAR(255),
-	create_at DATETIME,
+	created_at DATETIME,
 	PRIMARY KEY(id),
 	INDEX user_id_index(user_id)
 ) ENGINE = INNODB;
