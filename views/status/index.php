@@ -6,7 +6,7 @@
 
 	<?php //todo エラー処理 ?>
 
-	<textares name="body" rows="2" cols="60"><?php echo $this->escape($body); ?></textares>
+	<textarea name="body" rows="2" cols="60"><?php echo $this->escape($body); ?></textarea>
 
 	<p>
 		<input  type="submit" value="発言" />
