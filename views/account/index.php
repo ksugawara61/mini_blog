@@ -14,6 +14,6 @@
 		<a href="<?php echo $base_url; ?>/">ホーム</a>
 	</li>
 	<li>
-		<a href="<?php echo $base_url; ?>/account/signup">ログアウト</a>
+		<a href="<?php echo $base_url; ?>/account/signout">ログアウト</a>
 	</li>
 </ul>
