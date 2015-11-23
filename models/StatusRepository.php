@@ -21,4 +21,23 @@ class StatusRepository extends DbRepository
 
 		return $this->fetchAll($sql, array(':user_id' => $user_id));
 	}
+
+	// ユーザIDに一致する投稿を全件取得するメソッド
+	public function fetchAllByUserId($user_id)
+	{
+		$sql = "SELECT a.*, u.user_name FROM status a LEFT JOIN user u ON a.user_id = u.id WHERE u.id = :user_id ORDER BY a.created_at DESC";
+
+		return $this->fetchAll($sql, array(':user_id' => $user_id));
+	}
+
+	// 投稿IDとユーザIDに一致するレコードを１件取得するメソッド
+	public function fetchByIdAndUserName($id, $user_name)
+	{
+		$sql = "SELECT a.*, u.user_name FROM status a LEFT JOIN user u ON u.id = a.user_id WHERE a.id = :id AND u.user_name = :user_name";
+
+		return $this->fetch($sql, array(
+			':id' => $id,
+			':user_name' => $user_name,
+		));
+	}
 }
