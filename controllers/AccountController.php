@@ -74,13 +74,13 @@ class AccountController extends Controller
 	public function signinAction()
 	{
 		if ($this->session->isAuthenticated()) {
-			return $this->redirect('/accout');
+			return $this->redirect('/account');
 		}
 
 		return $this->render(array(
 			'user_name' => '',
 			'password' => '',
-			'_token' => $this->generateCsrfToken('accout/signin'),
+			'_token' => $this->generateCsrfToken('account/signin'),
 		));
 	}
 
@@ -88,7 +88,7 @@ class AccountController extends Controller
 	public function authenticateAction()
 	{
 		if ($this->session->isAuthenticated()) {
-			return $this->redirect('/accout');
+			return $this->redirect('/account');
 		}
 
 		if (!$this->request->isPost()) {
@@ -96,8 +96,8 @@ class AccountController extends Controller
 		}
 
 		$token = $this->request->getPost('_token');
-		if (!$this->checkCsrfToken('accout/signin', $token)) {
-			return $this->redirect('/accout/signin');
+		if (!$this->checkCsrfToken('account/signin', $token)) {
+			return $this->redirect('/account/signin');
 		}
 
 		$user_name = $this->request->getPost('user_name');
@@ -133,7 +133,7 @@ class AccountController extends Controller
 			'user_name' => $user_name,
 			'password' => $password,
 			'errors' => $errors,
-			'_token' => $this->generateCsrfToken('accout/signin'),
+			'_token' => $this->generateCsrfToken('account/signin'),
 		), 'signin');
 	}
 }
