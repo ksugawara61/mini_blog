@@ -57,6 +57,35 @@ class StatusController extends Controller
 		), 'index');
 	}
 
+		//
+	public function userAction($params)
+	{
+		$user = $this->db_manager->get('user')
+			->fetchByUserName($params['user_name']);
+		if (!$user) {
+			$this->forward404();
+		}
+
+		$statuses = $this->db_manager->get('Status')
+			->fetchAllByUserId($user['id']);
+		
+		$following = null;
+		if ($this->session->isAuthenticated()) {
+			$my = $this->session->get('user');
+			if ($my['id'] !== $user['id']) {
+				$following = $this->db_manager->get('Folllowing')
+					->isFollowing($my['id'], $user['id']);
+			}
+		}
+
+		return $this->render(array(
+			'user' => $user,
+			'statuses' => $statuses,
+			'following' => $following,
+			'_token' => $this->generateCsrfToken('account/follow'),
+		));
+	}
+
 	// 
 	public function showAction($params)
 	{
@@ -67,5 +96,5 @@ class StatusController extends Controller
 		}
 
 		return $this->render(array('status' => $status));
-	}
+	}	
 }
