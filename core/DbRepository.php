@@ -27,6 +27,12 @@ abstract class DbRepository
 	// SQLの実行結果のレコードを取得するメソッド
 	public function fetch($sql, $params = array())
 	{
+		return $this->execute($sql, $params)->fetch(PDO::FETCH_ASSOC);
+	}
+
+	//
+	public function fetchAll($sql, $params = array())
+	{
 		return $this->execute($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
