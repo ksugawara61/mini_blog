@@ -73,7 +73,7 @@ class StatusController extends Controller
 		if ($this->session->isAuthenticated()) {
 			$my = $this->session->get('user');
 			if ($my['id'] !== $user['id']) {
-				$following = $this->db_manager->get('Folllowing')
+				$following = $this->db_manager->get('Following')
 					->isFollowing($my['id'], $user['id']);
 			}
 		}
