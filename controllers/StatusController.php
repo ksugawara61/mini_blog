@@ -57,10 +57,10 @@ class StatusController extends Controller
 		), 'index');
 	}
 
-		//
+	//
 	public function userAction($params)
 	{
-		$user = $this->db_manager->get('user')
+		$user = $this->db_manager->get('User')
 			->fetchByUserName($params['user_name']);
 		if (!$user) {
 			$this->forward404();
