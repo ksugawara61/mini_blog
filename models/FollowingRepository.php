@@ -8,7 +8,7 @@ class FollowingRepository extends DbRepository
 
 		$stmt = $this->execute($sql, array(
 			':user_id' => $user_id,
-			':following' => $following_id,
+			':following_id' => $following_id,
 		));
 	}
 
